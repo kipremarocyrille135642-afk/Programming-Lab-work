@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+// Function to calculate sum and average using pointer
+void sumAverage(int *arr, int n, int *sum, float *avg) {
+    int i;
+    *sum = 0;
+
+    for(i = 0; i < n; i++) {
+        *sum += *(arr + i);   // pointer access
+    }
+
+    *avg = (float)(*sum) / n;
+}
+
+int main() {
+    int arr[100], n, i, sum;
+    float avg;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements:\n", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    sumAverage(arr, n, &sum, &avg);
+
+    printf("Sum = %d\n", sum);
+    printf("Average = %.2f\n", avg);
+
+    return 0;
+}

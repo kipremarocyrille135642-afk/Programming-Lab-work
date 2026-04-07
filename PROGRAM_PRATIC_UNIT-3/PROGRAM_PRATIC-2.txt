@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+// Function to calculate area using pointer
+void areaCircle(float *r) {
+    float area;
+    area = 3.14 * (*r) * (*r);
+    printf("Area of circle = %.2f\n", area);
+}
+
+int main() {
+    float radius;
+
+    printf("Enter radius: ");
+    scanf("%f", &radius);
+
+    areaCircle(&radius);   // passing address
+
+    return 0;
+}
