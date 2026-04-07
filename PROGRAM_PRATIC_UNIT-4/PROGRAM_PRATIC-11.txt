@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    long size;
+
+    // Open file in read mode
+    fp = fopen("input.txt", "rb");  // binary mode is safer
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+
+    // Move pointer to end of file
+    fseek(fp, 0, SEEK_END);
+
+    // Get current position, which is size of file
+    size = ftell(fp);
+
+    fclose(fp);
+
+    printf("Size of the file is %ld bytes.\n", size);
+
+    return 0;
+}

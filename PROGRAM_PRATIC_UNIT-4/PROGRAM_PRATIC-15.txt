@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    long pos;
+    char ch;
+
+    // Open file in read mode
+    fp = fopen("example.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+
+    // Read first character
+    ch = fgetc(fp);
+    printf("First character: %c\n", ch);
+
+    // Use ftell to get current position
+    pos = ftell(fp);
+    printf("Current file position after reading 1 char: %ld\n", pos);
+
+    // Use fseek to move to the 5th character (offset 4)
+    fseek(fp, 4, SEEK_SET);
+    ch = fgetc(fp);
+    printf("Character at position 5: %c\n", ch);
+
+    // Use ftell again
+    pos = ftell(fp);
+    printf("Current file position after fseek: %ld\n", pos);
+
+    // Use rewind to go back to beginning
+    rewind(fp);
+    ch = fgetc(fp);
+    printf("First character after rewind: %c\n", ch);
+
+    fclose(fp);
+    return 0;
+}

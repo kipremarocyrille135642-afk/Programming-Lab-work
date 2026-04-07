@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    char ch;
+
+    // Open file in read+write mode
+    fp = fopen("input.txt", "r+");
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+
+    // Read each character
+    while ((ch = fgetc(fp)) != EOF) {
+        if (ch == 'a') {
+            fseek(fp, -1, SEEK_CUR);  // move cursor back
+            fputc('x', fp);           // replace 'a' with 'x'
+        }
+    }
+
+    fclose(fp);
+    printf("All 'a' characters replaced with 'x'.\n");
+
+    return 0;
+}
