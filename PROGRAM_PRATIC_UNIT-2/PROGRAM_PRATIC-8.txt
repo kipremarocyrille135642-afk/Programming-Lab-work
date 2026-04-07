@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+struct StudentStruct {
+    int rollno;
+    float marks;
+    char grade;
+};
+
+union StudentUnion {
+    int rollno;
+    float marks;
+    char grade;
+};
+
+int main() {
+    struct StudentStruct s;
+    union StudentUnion u;
+
+    // Structure values
+    s.rollno = 101;
+    s.marks = 89.5;
+    s.grade = 'A';
+
+    // Union values
+    u.rollno = 101;
+    u.marks = 89.5;
+    u.grade = 'A';
+
+    printf("Structure values:\n");
+    printf("Roll No = %d\n", s.rollno);
+    printf("Marks = %.2f\n", s.marks);
+    printf("Grade = %c\n", s.grade);
+
+    printf("\nUnion values:\n");
+    printf("Roll No = %d\n", u.rollno);
+    printf("Marks = %.2f\n", u.marks);
+    printf("Grade = %c\n", u.grade);
+
+    return 0;
+}
