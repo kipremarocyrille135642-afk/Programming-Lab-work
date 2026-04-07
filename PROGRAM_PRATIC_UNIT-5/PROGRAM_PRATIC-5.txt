@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, minIndex, temp;
+
+    // Step 1: Input number of elements
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    // Step 2: Input elements
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Step 3: Selection Sort
+    for (i = 0; i < n - 1; i++) {
+        minIndex = i;
+        for (j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j; // find index of minimum element
+            }
+        }
+        // Swap arr[i] and arr[minIndex]
+        temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+
+    // Step 4: Display sorted array
+    printf("Array in ascending order:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
